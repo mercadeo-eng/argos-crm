@@ -1,0 +1,31 @@
+Argos CRM — Distribution License
+=================================
+
+This software is distributed through the Envato Marketplace and is
+licensed under the Envato Market Item License that you accept when you
+purchase the item.
+
+Two license tiers are available:
+
+  • Regular License — use in a single end product, accessed by you or
+    one client; the end product cannot be sold to others. Suitable for
+    using the template inside an internal CRM, or for one client
+    project.
+
+  • Extended License — use in a single end product, accessed by you or
+    one client; the end product can be sold to multiple end users.
+    Suitable for SaaS where end users pay to access the product.
+
+For the full and authoritative license text, see the URLs that Envato
+publishes alongside your purchase:
+
+  Regular:  https://themeforest.net/licenses/standard
+  Extended: https://themeforest.net/licenses/extended
+
+Open-source dependencies (Next.js, React, Tailwind, Supabase client,
+googleapis, next-intl, etc.) remain under their own licenses, which
+ship with their packages in `node_modules/`.
+
+If you have not purchased this item through Envato, you do not have a
+license to use, modify, or redistribute this software. Contact the
+author for licensing options.

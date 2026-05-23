@@ -1,0 +1,248 @@
+// Datos demo anónimos para preview del template sin BD configurada.
+// 8 empresas ficticias con métricas plausibles + 6 meses de histórico.
+
+import type { Cliente, CrmState, Historico } from "./types"
+
+export const DEMO_CLIENTES: Record<string, Cliente> = {
+  "acme-corp": {
+    id: "acme-corp",
+    nombre: "ACME Corp",
+    industria: "Manufactura",
+    ciclo: "mensual",
+    estado: "activo",
+    color: "#0EA5E9",
+    redes: [
+      { plataforma: "Instagram", estado: "activo", ultima: "09/05" },
+      { plataforma: "Facebook", estado: "activo", ultima: "08/05" },
+    ],
+    etapas: [
+      { etapa: "brainstorm", fecha: "2026-05-12", estado: "listo", calId: true },
+      { etapa: "produccion", fecha: "2026-05-19", estado: "listo", calId: true },
+      { etapa: "postproduccion", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "grilla", fecha: "2026-06-10", estado: "pendiente", calId: true },
+      { etapa: "cambios", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "cierre", fecha: "2026-06-12", estado: "pendiente", calId: true },
+    ],
+    pautas: { meta: { alcance: 21300, ctr: 4.1, costo: 320, roas: 4.4, cpr: 0.38 }, google: { alcance: 7100, ctr: 3.1, costo: 140, conversiones: 38 } },
+  },
+  "globex": {
+    id: "globex",
+    nombre: "Globex Industries",
+    industria: "Energía",
+    ciclo: "mensual",
+    estado: "activo",
+    color: "#6366F1",
+    redes: [
+      { plataforma: "Instagram", estado: "activo", ultima: "09/05" },
+      { plataforma: "Facebook", estado: "activo", ultima: "07/05" },
+    ],
+    etapas: [
+      { etapa: "brainstorm", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "produccion", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "postproduccion", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "grilla", fecha: "2026-05-22", estado: "pendiente", calId: true },
+      { etapa: "cambios", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "cierre", fecha: "2026-05-23", estado: "pendiente", calId: true },
+    ],
+    pautas: { meta: { alcance: 19200, ctr: 3.4, costo: 250, roas: null, cpr: 0.49 }, google: null },
+  },
+  "initech": {
+    id: "initech",
+    nombre: "Initech",
+    industria: "Software",
+    ciclo: "bimestral",
+    estado: "revision",
+    color: "#F59E0B",
+    redes: [
+      { plataforma: "Instagram", estado: "revision", ultima: "03/05" },
+      { plataforma: "Facebook", estado: "revision", ultima: "03/05" },
+    ],
+    etapas: [
+      { etapa: "brainstorm", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "produccion", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "postproduccion", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "grilla", fecha: "2026-05-26", estado: "pendiente", calId: true },
+      { etapa: "cambios", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "cierre", fecha: "2026-05-30", estado: "pendiente", calId: true },
+    ],
+    pautas: { meta: { alcance: 22100, ctr: 3.8, costo: 480, roas: 2.9, cpr: 0.52 }, google: null },
+    tieneLeads: true,
+    leads: { total: 504, referidos: 45, inversion: 500, ganancia: 3100, roi: 620 },
+  },
+  "hooli": {
+    id: "hooli",
+    nombre: "Hooli",
+    industria: "Tecnología",
+    ciclo: "trimestral",
+    estado: "activo",
+    color: "#10B981",
+    redes: [
+      { plataforma: "Instagram", estado: "activo", ultima: "10/05" },
+      { plataforma: "Facebook", estado: "activo", ultima: "09/05" },
+    ],
+    etapas: [
+      { etapa: "brainstorm", fecha: "2026-05-13", estado: "listo", calId: true },
+      { etapa: "produccion", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "postproduccion", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "grilla", fecha: "2026-06-01", estado: "pendiente", calId: true },
+      { etapa: "cambios", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "cierre", fecha: "2026-06-02", estado: "pendiente", calId: true },
+    ],
+    pautas: { meta: { alcance: 41800, ctr: 2.9, costo: 950, roas: null, cpr: 0.74 }, google: null },
+  },
+  "pied-piper": {
+    id: "pied-piper",
+    nombre: "Pied Piper",
+    industria: "Startup",
+    ciclo: "trimestral",
+    estado: "activo",
+    color: "#8B5CF6",
+    redes: [
+      { plataforma: "Instagram", estado: "activo", ultima: "08/05" },
+      { plataforma: "Facebook", estado: "activo", ultima: "07/05" },
+    ],
+    etapas: [
+      { etapa: "brainstorm", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "produccion", fecha: "2026-05-09", estado: "listo", calId: true },
+      { etapa: "postproduccion", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "grilla", fecha: "2026-05-20", estado: "listo", calId: true },
+      { etapa: "cambios", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "cierre", fecha: "2026-05-16", estado: "pendiente", calId: true },
+    ],
+    pautas: { meta: { alcance: 38500, ctr: 3.2, costo: 870, roas: null, cpr: 0.58 }, google: null },
+  },
+  "wayne-ent": {
+    id: "wayne-ent",
+    nombre: "Wayne Enterprises",
+    industria: "Corporativo",
+    ciclo: "trimestral",
+    estado: "pausa",
+    color: "#EC4899",
+    redes: [
+      { plataforma: "Instagram", estado: "pausado", ultima: "28/04" },
+      { plataforma: "Facebook", estado: "pausado", ultima: "28/04" },
+    ],
+    etapas: [
+      { etapa: "brainstorm", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "produccion", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "postproduccion", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "grilla", fecha: "2026-06-02", estado: "pendiente", calId: true },
+      { etapa: "cambios", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "cierre", fecha: "2026-06-03", estado: "pendiente", calId: true },
+    ],
+    pautas: null,
+  },
+  "stark-ind": {
+    id: "stark-ind",
+    nombre: "Stark Industries",
+    industria: "Tecnología",
+    ciclo: "mensual",
+    estado: "activo",
+    color: "#14B8A6",
+    redes: [
+      { plataforma: "Instagram", estado: "activo", ultima: "09/05" },
+      { plataforma: "Facebook", estado: "activo", ultima: "08/05" },
+      { plataforma: "TikTok", estado: "pausado", ultima: "06/05" },
+    ],
+    etapas: [
+      { etapa: "brainstorm", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "produccion", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "postproduccion", fecha: "2026-05-07", estado: "listo", calId: true },
+      { etapa: "grilla", fecha: "2026-05-14", estado: "listo", calId: true },
+      { etapa: "cambios", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "cierre", fecha: "2026-05-22", estado: "listo", calId: true },
+    ],
+    pautas: { meta: { alcance: 28900, ctr: 4.6, costo: 300, roas: 5.8, cpr: 0.29 }, google: { alcance: 9300, ctr: 3.5, costo: 180, conversiones: 62 } },
+  },
+  "massive-dyn": {
+    id: "massive-dyn",
+    nombre: "Massive Dynamic",
+    industria: "Ingeniería",
+    ciclo: "bimestral",
+    estado: "activo",
+    color: "#D97706",
+    redes: [
+      { plataforma: "Instagram", estado: "activo", ultima: "10/05" },
+      { plataforma: "Facebook", estado: "activo", ultima: "09/05" },
+    ],
+    etapas: [
+      { etapa: "brainstorm", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "produccion", fecha: "2026-05-04", estado: "listo", calId: true },
+      { etapa: "postproduccion", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "grilla", fecha: "2026-05-15", estado: "listo", calId: true },
+      { etapa: "cambios", fecha: null, estado: "pendiente", calId: false },
+      { etapa: "cierre", fecha: "2026-05-11", estado: "listo", calId: true },
+    ],
+    pautas: { meta: { alcance: 22800, ctr: 3.2, costo: 380, roas: 3.5, cpr: 0.61 }, google: { alcance: 8600, ctr: 2.6, costo: 180, conversiones: 29 } },
+  },
+}
+
+export const DEMO_HISTORICO = {
+  "acme-corp": [
+    { mes: "Dic", meta: { alcance: 14200, ctr: 3.2, costo: 280, roas: 3.1, cpr: 0.51, impresiones: 22000, interacciones: 980, seguidores: 4100 }, google: { alcance: 5200, ctr: 2.4, costo: 120, conversiones: 22, impresiones: 9400, visualizaciones: 3100 } },
+    { mes: "Ene", meta: { alcance: 16800, ctr: 3.5, costo: 300, roas: 3.6, cpr: 0.46, impresiones: 26100, interacciones: 1180, seguidores: 4280 }, google: { alcance: 5900, ctr: 2.6, costo: 130, conversiones: 28, impresiones: 10800, visualizaciones: 3600 } },
+    { mes: "Feb", meta: { alcance: 18100, ctr: 3.8, costo: 310, roas: 3.9, cpr: 0.43, impresiones: 28500, interacciones: 1380, seguidores: 4450 }, google: { alcance: 6300, ctr: 2.8, costo: 135, conversiones: 31, impresiones: 11500, visualizaciones: 3900 } },
+    { mes: "Mar", meta: { alcance: 19400, ctr: 3.9, costo: 315, roas: 4.1, cpr: 0.41, impresiones: 30200, interacciones: 1520, seguidores: 4620 }, google: { alcance: 6700, ctr: 3.0, costo: 138, conversiones: 34, impresiones: 12100, visualizaciones: 4200 } },
+    { mes: "Abr", meta: { alcance: 20200, ctr: 4.0, costo: 318, roas: 4.2, cpr: 0.39, impresiones: 31800, interacciones: 1640, seguidores: 4810 }, google: { alcance: 6900, ctr: 3.05, costo: 139, conversiones: 36, impresiones: 12600, visualizaciones: 4400 } },
+    { mes: "May", meta: { alcance: 21300, ctr: 4.1, costo: 320, roas: 4.4, cpr: 0.38, impresiones: 33500, interacciones: 1820, seguidores: 5020 }, google: { alcance: 7100, ctr: 3.1, costo: 140, conversiones: 38, impresiones: 13200, visualizaciones: 4650 } },
+  ],
+  "globex": [
+    { mes: "Dic", meta: { alcance: 12100, ctr: 2.6, costo: 230, roas: null, cpr: 0.62, impresiones: 19800, interacciones: 720, seguidores: 2840 }, google: null },
+    { mes: "Ene", meta: { alcance: 13800, ctr: 2.9, costo: 235, roas: null, cpr: 0.58, impresiones: 22100, interacciones: 840, seguidores: 2980 }, google: null },
+    { mes: "Feb", meta: { alcance: 15400, ctr: 3.0, costo: 240, roas: null, cpr: 0.55, impresiones: 24300, interacciones: 920, seguidores: 3150 }, google: null },
+    { mes: "Mar", meta: { alcance: 16800, ctr: 3.1, costo: 245, roas: null, cpr: 0.53, impresiones: 26500, interacciones: 1050, seguidores: 3340 }, google: null },
+    { mes: "Abr", meta: { alcance: 18000, ctr: 3.3, costo: 248, roas: null, cpr: 0.51, impresiones: 28100, interacciones: 1180, seguidores: 3520 }, google: null },
+    { mes: "May", meta: { alcance: 19200, ctr: 3.4, costo: 250, roas: null, cpr: 0.49, impresiones: 29800, interacciones: 1290, seguidores: 3680 }, google: null },
+  ],
+  "initech": [
+    { mes: "Dic", meta: { alcance: 17200, ctr: 3.2, costo: 460, roas: 2.4, cpr: 0.68, impresiones: 27500, interacciones: 1120, seguidores: 5800 }, google: null },
+    { mes: "Ene", meta: { alcance: 18800, ctr: 3.4, costo: 465, roas: 2.6, cpr: 0.62, impresiones: 29800, interacciones: 1280, seguidores: 6020 }, google: null },
+    { mes: "Feb", meta: { alcance: 19900, ctr: 3.5, costo: 470, roas: 2.7, cpr: 0.58, impresiones: 31200, interacciones: 1410, seguidores: 6230 }, google: null },
+    { mes: "Mar", meta: { alcance: 20800, ctr: 3.6, costo: 475, roas: 2.8, cpr: 0.55, impresiones: 32600, interacciones: 1560, seguidores: 6480 }, google: null },
+    { mes: "Abr", meta: { alcance: 21500, ctr: 3.7, costo: 478, roas: 2.85, cpr: 0.53, impresiones: 33800, interacciones: 1680, seguidores: 6710 }, google: null },
+    { mes: "May", meta: { alcance: 22100, ctr: 3.8, costo: 480, roas: 2.9, cpr: 0.52, impresiones: 34900, interacciones: 1820, seguidores: 6940 }, google: null },
+  ],
+  "hooli": [
+    { mes: "Dic", meta: { alcance: 28400, ctr: 2.4, costo: 900, roas: null, cpr: 0.92, impresiones: 48200, interacciones: 1480, seguidores: 8200 }, google: null },
+    { mes: "Ene", meta: { alcance: 32100, ctr: 2.6, costo: 920, roas: null, cpr: 0.86, impresiones: 53400, interacciones: 1720, seguidores: 8580 }, google: null },
+    { mes: "Feb", meta: { alcance: 35200, ctr: 2.7, costo: 930, roas: null, cpr: 0.82, impresiones: 57800, interacciones: 1940, seguidores: 8920 }, google: null },
+    { mes: "Mar", meta: { alcance: 37800, ctr: 2.8, costo: 940, roas: null, cpr: 0.79, impresiones: 61500, interacciones: 2120, seguidores: 9240 }, google: null },
+    { mes: "Abr", meta: { alcance: 40100, ctr: 2.85, costo: 945, roas: null, cpr: 0.76, impresiones: 64800, interacciones: 2280, seguidores: 9510 }, google: null },
+    { mes: "May", meta: { alcance: 41800, ctr: 2.9, costo: 950, roas: null, cpr: 0.74, impresiones: 67500, interacciones: 2410, seguidores: 9780 }, google: null },
+  ],
+  "pied-piper": [
+    { mes: "Dic", meta: { alcance: 25800, ctr: 2.7, costo: 820, roas: null, cpr: 0.74, impresiones: 44200, interacciones: 1380, seguidores: 7400 }, google: null },
+    { mes: "Ene", meta: { alcance: 29400, ctr: 2.9, costo: 840, roas: null, cpr: 0.69, impresiones: 48800, interacciones: 1580, seguidores: 7720 }, google: null },
+    { mes: "Feb", meta: { alcance: 32200, ctr: 3.0, costo: 850, roas: null, cpr: 0.66, impresiones: 52900, interacciones: 1780, seguidores: 8020 }, google: null },
+    { mes: "Mar", meta: { alcance: 34800, ctr: 3.1, costo: 858, roas: null, cpr: 0.63, impresiones: 56400, interacciones: 1940, seguidores: 8310 }, google: null },
+    { mes: "Abr", meta: { alcance: 36900, ctr: 3.15, costo: 865, roas: null, cpr: 0.60, impresiones: 59400, interacciones: 2080, seguidores: 8580 }, google: null },
+    { mes: "May", meta: { alcance: 38500, ctr: 3.2, costo: 870, roas: null, cpr: 0.58, impresiones: 61800, interacciones: 2210, seguidores: 8820 }, google: null },
+  ],
+  "stark-ind": [
+    { mes: "Dic", meta: { alcance: 18400, ctr: 3.8, costo: 280, roas: 4.2, cpr: 0.42, impresiones: 28400, interacciones: 1280, seguidores: 6200 }, google: { alcance: 6100, ctr: 2.8, costo: 160, conversiones: 38, impresiones: 11200, visualizaciones: 3800 } },
+    { mes: "Ene", meta: { alcance: 21800, ctr: 4.1, costo: 285, roas: 4.6, cpr: 0.38, impresiones: 32800, interacciones: 1480, seguidores: 6480 }, google: { alcance: 6800, ctr: 3.0, costo: 168, conversiones: 44, impresiones: 12400, visualizaciones: 4100 } },
+    { mes: "Feb", meta: { alcance: 24200, ctr: 4.3, costo: 290, roas: 4.9, cpr: 0.35, impresiones: 36100, interacciones: 1680, seguidores: 6740 }, google: { alcance: 7400, ctr: 3.2, costo: 172, conversiones: 49, impresiones: 13400, visualizaciones: 4400 } },
+    { mes: "Mar", meta: { alcance: 26100, ctr: 4.4, costo: 294, roas: 5.2, cpr: 0.33, impresiones: 38800, interacciones: 1840, seguidores: 6980 }, google: { alcance: 7900, ctr: 3.3, costo: 175, conversiones: 53, impresiones: 14200, visualizaciones: 4650 } },
+    { mes: "Abr", meta: { alcance: 27800, ctr: 4.5, costo: 297, roas: 5.5, cpr: 0.31, impresiones: 41200, interacciones: 1980, seguidores: 7220 }, google: { alcance: 8700, ctr: 3.4, costo: 178, conversiones: 58, impresiones: 15100, visualizaciones: 4880 } },
+    { mes: "May", meta: { alcance: 28900, ctr: 4.6, costo: 300, roas: 5.8, cpr: 0.29, impresiones: 42800, interacciones: 2080, seguidores: 7440 }, google: { alcance: 9300, ctr: 3.5, costo: 180, conversiones: 62, impresiones: 15800, visualizaciones: 5080 } },
+  ],
+  "massive-dyn": [
+    { mes: "Dic", meta: { alcance: 15400, ctr: 2.5, costo: 360, roas: 2.6, cpr: 0.82, impresiones: 24800, interacciones: 920, seguidores: 4800 }, google: { alcance: 5800, ctr: 2.0, costo: 165, conversiones: 18, impresiones: 10400, visualizaciones: 3400 } },
+    { mes: "Ene", meta: { alcance: 17600, ctr: 2.7, costo: 365, roas: 2.8, cpr: 0.76, impresiones: 27600, interacciones: 1080, seguidores: 5040 }, google: { alcance: 6400, ctr: 2.2, costo: 170, conversiones: 21, impresiones: 11400, visualizaciones: 3700 } },
+    { mes: "Feb", meta: { alcance: 19400, ctr: 2.9, costo: 370, roas: 3.0, cpr: 0.72, impresiones: 30200, interacciones: 1220, seguidores: 5260 }, google: { alcance: 7000, ctr: 2.3, costo: 174, conversiones: 23, impresiones: 12300, visualizaciones: 3950 } },
+    { mes: "Mar", meta: { alcance: 20800, ctr: 3.0, costo: 375, roas: 3.2, cpr: 0.68, impresiones: 32400, interacciones: 1360, seguidores: 5480 }, google: { alcance: 7600, ctr: 2.4, costo: 176, conversiones: 25, impresiones: 13100, visualizaciones: 4180 } },
+    { mes: "Abr", meta: { alcance: 21900, ctr: 3.1, costo: 378, roas: 3.35, cpr: 0.64, impresiones: 34200, interacciones: 1480, seguidores: 5680 }, google: { alcance: 8200, ctr: 2.5, costo: 178, conversiones: 27, impresiones: 13800, visualizaciones: 4380 } },
+    { mes: "May", meta: { alcance: 22800, ctr: 3.2, costo: 380, roas: 3.5, cpr: 0.61, impresiones: 35800, interacciones: 1580, seguidores: 5860 }, google: { alcance: 8600, ctr: 2.6, costo: 180, conversiones: 29, impresiones: 14400, visualizaciones: 4580 } },
+  ],
+}
+
+// Cast a Historico — el shape interno coincide pero TS infiere las propiedades
+// numéricas como concretas y querría ver explícitamente las opcionales.
+export const DEMO_HISTORICO_TYPED: Historico = DEMO_HISTORICO as Historico
+
+export const DEMO_SEED: CrmState = {
+  clientes: DEMO_CLIENTES,
+  apiKeys: {},
+  notasGlobal: {},
+  profilesByCliente: {},
+}
