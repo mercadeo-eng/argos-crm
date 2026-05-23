@@ -18,14 +18,11 @@ export interface Stage {
 }
 
 const DEFAULT_STAGES: Stage[] = [
-  { id: "brainstorm", label: "Brainstorm", icon: "💡", hasDeliverable: true },
-  { id: "pre-produccion", label: "Pre-producción", icon: "📝", hasDeliverable: true },
-  { id: "produccion", label: "Producción", icon: "📸" },
-  { id: "fotos", label: "Fotos", icon: "📷", hasDeliverable: true },
-  { id: "postproduccion", label: "Post-producción", icon: "✂️", hasDeliverable: true },
-  { id: "grilla", label: "Grilla", icon: "📅", hasDeliverable: true },
-  { id: "cambios", label: "Cambios", icon: "🔄" },
-  { id: "cierre", label: "Cierre", icon: "✅" },
+  { id: "stage-1", label: "Etapa 1", icon: "1️⃣", hasDeliverable: true },
+  { id: "stage-2", label: "Etapa 2", icon: "2️⃣", hasDeliverable: true },
+  { id: "stage-3", label: "Etapa 3", icon: "3️⃣", hasDeliverable: true },
+  { id: "stage-4", label: "Etapa 4", icon: "4️⃣", hasDeliverable: true },
+  { id: "stage-5", label: "Etapa 5", icon: "5️⃣" },
 ]
 
 function parseStagesFromEnv(): Stage[] | null {

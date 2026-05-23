@@ -170,7 +170,6 @@ export function ClientePage(props: Props) {
     { id: "rrss", label: t("tabSocial"), icon: "📱" },
     { id: "pautas", label: appLabels.metricsModule ?? t("tabMetrics"), icon: "📊" },
     ...(esAdmin ? [{ id: "api", label: "API", icon: "🔌" }] : []),
-    ...(cliente.tieneLeads ? [{ id: "leads", label: t("tabLeads"), icon: "👥" }] : []),
   ]
 
   function updateRed(i: number, estado: string) {
@@ -571,27 +570,6 @@ export function ClientePage(props: Props) {
 
       {tab === "api" && (
         <ApiTab apiData={clienteApi} onUpdate={(p, v) => onUpdateApi && onUpdateApi(cliente.id, p, v)} />
-      )}
-
-      {tab === "leads" && cliente.leads && (
-        <div className="space-y-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <Metric label={t("leadsCampaign")} value={cliente.leads.total} sub="Meta Ads" />
-            <Metric label={t("leadsReferred")} value={cliente.leads.referidos} sub={t("leadsNoCost")} />
-            <Metric label={t("leadsInvestmentLabel")} value={`$${cliente.leads.inversion}`} sub={t("leadsCampaignSub")} />
-            <Metric label={t("leadsRoi")} value={`${cliente.leads.roi}%`} sub={t("leadsProfit", { amount: cliente.leads.ganancia })} valueColor="text-emerald-400" />
-          </div>
-          {process.env.NEXT_PUBLIC_LEADS_EXTERNAL_URL && (
-            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 text-center">
-              <p className="text-zinc-400 text-sm mb-3">{t("leadsPipelineAvailable")}</p>
-              <a href={process.env.NEXT_PUBLIC_LEADS_EXTERNAL_URL} target="_blank" rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-sky-500/20 border border-sky-500/30 text-sky-300 rounded-lg text-sm hover:bg-sky-500/30 transition-colors">
-                {t("leadsExternalCta")} ↗
-              </a>
-              <p className="text-xs text-zinc-600 mt-3">{t("leadsPipelineFuture")}</p>
-            </div>
-          )}
-        </div>
       )}
 
       {esAdmin && googleConnected && (

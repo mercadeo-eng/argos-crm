@@ -44,14 +44,6 @@ export type Pauta = {
   google?: PautaGoogle | null
 }
 
-export type Leads = {
-  total: number
-  referidos: number
-  inversion: number
-  ganancia: number
-  roi: number
-}
-
 export type Cliente = {
   id: string
   nombre: string
@@ -62,8 +54,6 @@ export type Cliente = {
   redes: Red[]
   etapas: Etapa[]
   pautas: Pauta | null
-  tieneLeads?: boolean
-  leads?: Leads
   driveFolderId?: string | null
   calendarId?: string
 }
